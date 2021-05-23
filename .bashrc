@@ -27,3 +27,4 @@ function set_ps1 {
 }
 
 PROMPT_COMMAND='set_ps1'
+alias xrandr-colour='xrandr --output  HDMI-1 --set "Broadcast RGB" "Full"'
