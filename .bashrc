@@ -1,11 +1,11 @@
 function in_git_repo_name {
-  ps_git_name="\\[\e[01;33m\\]$(basename `git rev-parse --show-toplevel`)\\[\e[0m\\]"
+  ps_git_name="\\[\e[01;32m\\]$(basename `git rev-parse --show-toplevel`)\\[\e[0m\\]"
 }
 
 function in_git_repo_branch {
   # if there are uncommitted changes, include an asterisk (*) character
   local star=$(if [ -n "$(git status -s)" ]; then echo ' *'; fi)
-  ps_git_branch="\\[\e[01;36m\\]($(git rev-parse --abbrev-ref HEAD)$star)\\[\e[0m\\]"
+  ps_git_branch="\\[\e[01;39m\\]($(git rev-parse --abbrev-ref HEAD)$star)\\[\e[0m\\]"
 }
 
 function in_git_repo_dir {
@@ -22,7 +22,7 @@ function set_ps1 {
       in_git_repo_name && in_git_repo_branch && in_git_repo_dir
       PS1="\\[\033]0;$TERM_TITLE\007\\]$ps_git_name $ps_git_branch$ps_git_dir "
     else
-      PS1='\[\033]0;\W\007\]\[\e[01;32m\]\u@\h\[\e[0m\]\[\e[01;33m\]:\[\e[0m\]\[\e[01;36m\]\w\[\e[0m\] \[\e[01;38m\]\$\[\e[0m\] '
+      PS1='\[\033]0;\W\007\]\[\e[01;32m\]\u@\h\[\e[0m\]\[\e[01;32m\]:\[\e[0m\]\[\e[01;38m\]\w\[\e[0m\] \[\e[01;38m\]\$\[\e[0m\] '
   fi
 }
 
